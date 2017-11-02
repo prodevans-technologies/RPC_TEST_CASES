@@ -26,7 +26,7 @@ public class TestRPC {
                     conf.setServerURL(serverUrl);
 
                     Vector<Object> params = new Vector<Object>();
-                    params.add("OE-000004");
+                    params.add("NED_Ops");
 
                     server.setConfig(conf);
 

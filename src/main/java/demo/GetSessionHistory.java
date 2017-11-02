@@ -32,7 +32,7 @@ public class GetSessionHistory {
 			Date date = formatter.parse("2017-06-06");
 			params.add(date);
 			params.add(new Date());
-			params.add("ROL000007");
+			params.add("OE-000003");
 
 			server.setConfig(conf);
 
