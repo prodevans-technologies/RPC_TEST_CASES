@@ -1,19 +1,25 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package demo;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
-
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
-public class GetSessionHistory {
-	// The location of our server.
+/**
+ *
+ * @author rajanikant
+ */
+public class GetUserList {
+    // The location of our server.
 	private final static String server_url = "http://52.172.205.76/unifyv3/xmlRPC.do";
 
 	public static void main(String[] args) {
@@ -28,15 +34,13 @@ public class GetSessionHistory {
 			conf.setServerURL(serverUrl);
 
 			Vector params = new Vector();
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			Date date = formatter.parse("2017-06-06");
-			params.add(date);
-			params.add(new Date());
-			params.add("OE-0000013");
-
+			//params.add("ROL000007");
+			params.add("0");
+                        params.add(0);
+                        params.add(0);
 			server.setConfig(conf);
 
-			Object[] token = (Object[]) server.execute("unify.getSessionHistory", params);
+			Object[] token = (Object[]) server.execute("unify.getAccountList", params);
 
 			for (Object ob : token) {
 				HashMap<String, Object> hs = (HashMap<String, Object>) ob;
@@ -44,7 +48,7 @@ public class GetSessionHistory {
 				Iterator it = hs.entrySet().iterator();
 
 				System.out.println("==========================================================");
-				System.out.println("================ Sessions ============================");
+				System.out.println("================ Subscription ============================");
 				System.out.println("==========================================================");
 
 				while (it.hasNext()) {
@@ -63,5 +67,5 @@ public class GetSessionHistory {
 		catch (Exception exception) {
 			System.err.println("JavaClient: " + exception.toString());
 		}
-	}
+        }
 }
